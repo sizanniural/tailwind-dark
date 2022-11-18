@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { useRecoilState } from "recoil";
+import "./App.css";
+import { themeAtom } from "./atoms/themeAtom";
+import Header from "./components/header/Header";
+import Form from "./form/Form";
 
 function App() {
+  const [theme] = useRecoilState(themeAtom);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={theme}>
+      <div className="dark:bg-darkBackground dark:text-white min-h-[100vh]">
+        <Header />
+        <div className="flex items-center justify-center h-[90vh]">
+          <Form />
+        </div>
+      </div>
     </div>
   );
 }
